@@ -923,10 +923,31 @@ footer.site-footer {
   #hrse-npn .npn-success .s2 { font-size: 20px; color: #c8ffd4; }
   #hrse-npn .npn-success .s3 { font-size: 14px; color: #6ed98a; }
 
+  /* Panel can scroll internally if content ever exceeds viewport height —
+     critical safety net since this popup has no close button. */
+  #hrse-npn { overflow-y: auto; }
+  #hrse-npn .npn-panel { max-height: calc(100vh - 40px); overflow-y: auto; }
+
   @media (max-width: 720px) {
     #hrse-npn .npn-panel { flex-direction: column; width: 460px; min-height: 0; }
     #hrse-npn .npn-left { border-right: none; border-bottom: 1px solid #173b1e; }
     #hrse-npn h1 { font-size: 38px; }
+  }
+
+  @media (max-width: 480px) {
+    #hrse-npn { padding: 12px; }
+    #hrse-npn .npn-panel { width: 100%; border-radius: 6px; }
+    #hrse-npn .npn-left { padding: 26px 22px; }
+    #hrse-npn .npn-right { padding: 24px 22px; }
+    #hrse-npn h1 { font-size: 28px; margin-bottom: 12px; }
+    #hrse-npn .npn-sub { font-size: 14.5px; max-width: none; }
+    #hrse-npn .npn-eyebrow { margin-bottom: 14px; }
+    #hrse-npn .npn-logo { width: 130px; margin-top: 18px; }
+    #hrse-npn .npn-blob { width: 140px; height: 140px; top: -40px; left: -40px; }
+    #hrse-npn form { gap: 12px; }
+    #hrse-npn .npn-formtitle { margin-bottom: 0; }
+    #hrse-npn input { padding: 10px 12px; font-size: 13px; }
+    #hrse-npn button.npn-submit { padding: 13px; font-size: 15px; }
   }
 </style>
 </head>
