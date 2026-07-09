@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+
 <meta charset="UTF-8">
+<link rel="preload" href="assets/35b975ab97cfefd7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/da39e83d01ce3cb8.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/340e696a955046b0.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inside Race Fit — HRSE PWR Blog</title>
 <style>/* vietnamese */
@@ -646,8 +650,119 @@ footer.site-footer {
   "sameAs": []
 }
 </script>
+<style>
+/* ==== HRSE PWR Newsletter Popup — Neon Split (self-contained) ==== */
+  #hrse-npn *, #hrse-npn *::before, #hrse-npn *::after { box-sizing: border-box; }
+  #hrse-npn {
+    position: fixed; inset: 0; z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    background: rgba(4,9,5,0.55);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    font-family: 'Barlow Condensed','Arial Narrow',sans-serif;
+    animation: npn-fade 150ms ease;
+  }
+  #hrse-npn[hidden] { display: none; }
+  @keyframes npn-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes npn-rise { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes npn-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  #hrse-npn .npn-panel {
+    position: relative; display: flex; width: 820px; max-width: 100%; min-height: 440px;
+    background: #0a1a0d; border: 1px solid #2d7039; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,212,90,0.13), 0 24px 80px -20px rgba(0,212,90,0.27);
+    animation: npn-rise 200ms cubic-bezier(0.16,1,0.3,1);
+  }
+
+  #hrse-npn .npn-left {
+    position: relative; flex: 1.05; padding: 44px 40px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: radial-gradient(120% 90% at 0% 0%, #103a1e 0%, #0a1a0d 55%);
+    border-right: 1px solid #173b1e;
+  }
+  #hrse-npn .npn-blob {
+    position: absolute; top: -60px; left: -60px; width: 220px; height: 220px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,90,0.33) 0%, transparent 70%);
+    filter: blur(20px); pointer-events: none;
+  }
+  #hrse-npn .npn-eyebrow {
+    position: relative; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono',monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    color: #00ff70; text-transform: uppercase; margin-bottom: 22px;
+  }
+  #hrse-npn .npn-dot { width: 8px; height: 8px; border-radius: 50%; background: #00ff70; box-shadow: 0 0 10px #00ff70; animation: npn-pulse 1.8s ease-in-out infinite; }
+  #hrse-npn h1 {
+    position: relative; font-size: 48px; font-weight: 700; letter-spacing: -0.02em; line-height: 0.98;
+    color: #c8ffd4; text-transform: uppercase; margin: 0 0 20px; text-shadow: 0 0 30px rgba(0,212,90,0.33);
+  }
+  #hrse-npn h1 .accent { color: #00ff70; text-shadow: 0 0 24px rgba(0,255,112,0.53); }
+  #hrse-npn .npn-sub { position: relative; font-size: 18px; line-height: 1.5; color: #9efaaf; margin: 0; max-width: 320px; }
+  #hrse-npn .npn-logo { position: relative; display: block; width: 200px; max-width: 70%; height: auto; margin-top: 32px; }
+
+  #hrse-npn .npn-right {
+    flex: 0.95; padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; background: #0c1d0f;
+  }
+  #hrse-npn .npn-formtitle { font-family: 'JetBrains Mono',monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: #4a9e5c; text-transform: uppercase; margin-bottom: 2px; }
+  #hrse-npn form { display: flex; flex-direction: column; gap: 18px; }
+  #hrse-npn .npn-field { display: flex; flex-direction: column; gap: 6px; }
+  #hrse-npn label { font-family: 'JetBrains Mono',monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: #4a9e5c; text-transform: uppercase; }
+  #hrse-npn input {
+    width: 100%; background: #071009; border: 1px solid #1e4d26; border-radius: 4px; padding: 12px 14px;
+    font-family: 'JetBrains Mono',monospace; font-size: 14px; color: #c8ffd4; outline: none; transition: all 80ms ease;
+  }
+  #hrse-npn input::placeholder { color: #2d6e3a; }
+  #hrse-npn input:focus { border-color: #00d45a; box-shadow: 0 0 0 3px rgba(0,212,90,0.18); }
+  #hrse-npn .npn-error { font-family: 'JetBrains Mono',monospace; font-size: 11px; color: #ff6b6b; }
+  #hrse-npn button.npn-submit {
+    margin-top: 4px; width: 100%; background: linear-gradient(180deg, #00ff70, #00d45a); border: none; border-radius: 5px; padding: 15px;
+    font-family: 'Barlow Condensed',sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #04140a; cursor: pointer; box-shadow: 0 0 24px rgba(0,212,90,0.33); transition: all 120ms ease;
+  }
+  #hrse-npn button.npn-submit:hover { box-shadow: 0 0 34px rgba(0,255,112,0.53); transform: translateY(-1px); }
+  #hrse-npn .npn-success { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  #hrse-npn .npn-success .s1 { font-family: 'JetBrains Mono',monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #00ff70; text-transform: uppercase; text-shadow: 0 0 16px rgba(0,255,112,0.4); }
+  #hrse-npn .npn-success .s2 { font-size: 20px; color: #c8ffd4; }
+  #hrse-npn .npn-success .s3 { font-size: 14px; color: #6ed98a; }
+
+  @media (max-width: 720px) {
+    #hrse-npn .npn-panel { flex-direction: column; width: 460px; min-height: 0; }
+    #hrse-npn .npn-left { border-right: none; border-bottom: 1px solid #173b1e; }
+    #hrse-npn h1 { font-size: 38px; }
+  }
+</style>
 </head>
 <body>
+<div id="hrse-npn" role="dialog" aria-modal="true" aria-label="Newsletter signup">
+  <div class="npn-panel">
+    <div class="npn-left">
+      <div class="npn-blob"></div>
+      <div>
+        <div class="npn-eyebrow"><span class="npn-dot"></span>INTEL DROP</div>
+        <h1>Get The<br>HRSE PWR<br><span class="accent">Weekly Read</span></h1>
+        <p class="npn-sub">Race Fit selections, Jockey / Trainer statistics and further intel &mdash; straight to your inbox. No spam, unsubscribe anytime.</p>
+      </div>
+      <img class="npn-logo" src="assets/65a5bc1ebff14a4f.png" alt="HRSE PWR — Horse Racing Intelligence">
+    </div>
+
+    <div class="npn-right">
+      <form id="hrse-npn-form" novalidate>
+        <div class="npn-formtitle">Join the list</div>
+        <div class="npn-field">
+          <label for="hrse-npn-name">Name</label>
+          <input id="hrse-npn-name" name="name" type="text" placeholder="First &amp; last name" autocomplete="name" required>
+        </div>
+        <div class="npn-field">
+          <label for="hrse-npn-email">Email</label>
+          <input id="hrse-npn-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+        <div class="npn-error" id="hrse-npn-error" style="display:none;"></div>
+        <button class="npn-submit" type="submit">&#9654; Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">
@@ -760,5 +875,60 @@ footer.site-footer {
 </footer>
 
 
+
+<script>
+  (function () {
+    var overlay = document.getElementById('hrse-npn');
+    if (!overlay) return;
+    var form = document.getElementById('hrse-npn-form');
+    var errEl = document.getElementById('hrse-npn-error');
+    var right = overlay.querySelector('.npn-right');
+
+    // Already subscribed on a previous visit — don't show it again.
+    if (localStorage.getItem('hrseSubscribed') === '1') {
+      overlay.setAttribute('hidden', '');
+      return;
+    }
+
+    // No backdrop-click, no Escape-key, no close button — intentional.
+    // The only way out is a successful submission (auto-dismisses below).
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      errEl.style.display = 'none';
+      if (!name || !email) { showErr('Name and email are required.'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Enter a valid email address.'); return; }
+
+      // Sends to the HRSE PWR Google Sheet via Apps Script (same pattern
+      // already proven working on the other site — form-encoded POST,
+      // since the Apps Script reads e.parameter, not a JSON body).
+      var body = new URLSearchParams();
+      body.append('name', name);
+      body.append('email', email);
+      fetch('https://script.google.com/macros/s/AKfycbzerUv7hhIGII_tHgHbeAf1MBV52AMKZLsZL28uYji-wOQmGnBbhHb9xtZm6i36G5L9/exec', {
+        method: 'POST',
+        body: body
+      }).catch(function(){ /* fail silently — don't block the success UI on a network hiccup */ });
+
+      localStorage.setItem('hrseSubscribed', '1');
+
+      var first = name.split(' ')[0] || 'Rider';
+      right.innerHTML =
+        '<div class="npn-success">' +
+          '<div class="s1">&#10003; Signal Received</div>' +
+          '<div class="s2">' + escapeHtml(first) + ', you\'re on the list.</div>' +
+          '<div class="s3">Watch your inbox for the next read.</div>' +
+        '</div>';
+
+      // Only exit point: auto-dismiss shortly after a successful signup.
+      setTimeout(function () { overlay.setAttribute('hidden', ''); }, 2200);
+    });
+
+    function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
+    function escapeHtml(s) { return s.replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  })();
+</script>
 
 </body></html>
